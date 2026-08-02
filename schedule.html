@@ -211,8 +211,6 @@
     padding: 1px 5px; border-radius: 2px; margin-left: 7px;
     vertical-align: 2px; white-space: nowrap;
   }
-  .session.is-break { padding: 11px 0; opacity: .62; }
-  .session.is-break .s-title { font-size: 15px; font-weight: 400; font-family: var(--body); font-style: italic; }
 
   /* ---------------------------------------------------------------- "now" */
   .session.is-now {
@@ -431,7 +429,9 @@
    who   : presenter(s). Leave "" for things with no presenter.
    loc   : room name. Leave "" and nothing renders - no broken layout.
    opt   : true  -> shows an "Optional" tag
-   brk   : true  -> renders as a recessive break row
+
+   Breaks are deliberately styled the same as every other session. They are
+   vendor-hall time, not dead time, so they should not read as skippable.
    =========================================================================== */
 const SCHEDULE = [
   {
@@ -445,14 +445,16 @@ const SCHEDULE = [
         desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
       { start:"09:00", end:"10:15", title:"Welcome &amp; Opening Keynote", who:"Dr. Anthony Balduzzi &amp; Dr. Jamil Sayegh", loc:"Main Ballroom",
         desc:"Waking up to the rest of your life." },
-      { start:"10:15", end:"11:00", title:"Break", brk:true, who:"", loc:"Vendor Hall", desc:"" },
+      { start:"10:15", end:"11:00", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
+        desc:"Connect in the Vendor Hall with some of the best companies in health. Try experiences like massage, acupuncture, and the cold plunge &mdash; and talk directly with doctors and health experts about peptides, testing, and what&rsquo;s working now." },
       { start:"11:00", end:"12:00", title:"Movement Breakouts", who:"", loc:"",
         desc:"Two tracks, run back to back &mdash; you&rsquo;ll do both. <strong>Track A:</strong> guided vibration &amp; myofascial massage with Rapid Release. <strong>Track B:</strong> guided breathwork experience with Michael Roviello. Your badge shows which track you start with." },
       { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"",
         desc:"Real healthy food, real conversations, no compromises. GA+ and VIP each have their own lunch &mdash; check your badge." },
       { start:"14:30", end:"16:30", title:"Health Experts Q&amp;A Panel", who:"Dr. Philip Ovadia, Troy Casey &amp; Dylan Gemelli", loc:"Main Ballroom",
         desc:"Each shares a short presentation on what&rsquo;s actually working, then joins Dr. Balduzzi on stage for an open Q&amp;A." },
-      { start:"16:30", end:"17:00", title:"Break", brk:true, who:"", loc:"Vendor Hall", desc:"" },
+      { start:"16:30", end:"17:00", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
+        desc:"Last chance today for the Vendor Hall &mdash; massage, acupuncture, cold plunge, and time with the doctors and health experts." },
       { start:"17:00", end:"18:00", title:"Thriving at 90 Keynote", who:"Jim Flaherty", loc:"Main Ballroom",
         desc:"The final keynote of the day. Jim is 90 &mdash; here&rsquo;s how he&rsquo;s thriving." },
       { start:"18:00", end:"19:00", title:"Alcohol-Free Happy Hour", who:"", loc:"", opt:true,
@@ -464,27 +466,31 @@ const SCHEDULE = [
     name: "Day Two &middot; Vitality",
     theme: "Reclaim your energy. Learn the science of hormones, heart health, and lifelong vitality.",
     items: [
-      { start:"07:00", end:"07:50", title:"Cold Plunge &amp; Morning Qigong", who:"Troy Casey", loc:"", opt:true,
-        desc:"For those who want to start the day cracked open." },
-      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"",
-        desc:"Coffee, mingling, and vendor experiences to explore." },
-      { start:"09:00", end:"11:00", title:"Inner Transformation &amp; Healing Workshop", who:"Dr. Jamil Sayegh", loc:"",
+      { start:"07:00", end:"07:50", title:"Morning Qigong", who:"Troy Casey", loc:"Breakout Rooms", opt:true,
+        desc:"The Certified Health Nut teaches you the ancient art of qigong &mdash; body movements paired with synchronized breathing, for energy and longevity. The kind of movement that leaves you energized, open, and alive." },
+      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"Vendor Hall",
+        desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
+      { start:"09:00", end:"11:00", title:"Inner Transformation &amp; Healing Workshop", who:"Dr. Jamil Sayegh", loc:"Main Ballroom",
         desc:"Release the blockages creating physical and emotional pain, so you can step into your strongest, most alive self." },
-      { start:"11:00", end:"11:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
-      { start:"11:15", end:"13:00", title:"Somatic Breathwork", who:"", loc:"",
-        desc:"A group session reconnecting with your body and finding true relaxation." },
-      { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"",
-        desc:"Real food and real conversations with the people walking this with you." },
-      { start:"14:30", end:"15:45", title:"Hormones, Thyroid &amp; Midlife Energy", who:"Dr. Amie Hornaman", loc:"",
+      { start:"11:00", end:"11:40", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
+        desc:"Connect in the Vendor Hall with some of the best companies in health. Try experiences like massage, acupuncture, and the cold plunge &mdash; and talk directly with doctors and health experts about peptides, testing, and what&rsquo;s working now." },
+      { start:"11:40", end:"12:45", title:"Guided Breathwork", who:"Ryan McBurney &amp; Shelby Von Oepen (Liquid Breathwork)", loc:"Breakout Rooms",
+        desc:"A deep group session &mdash; learn how to use your breath to create more relaxation and healing in your body." },
+      { start:"12:45", end:"14:00", title:"Connection Lunch", who:"", loc:"",
+        desc:"Real food and real conversations with the people walking this with you. GA+ and VIP each have their own lunch &mdash; check your badge." },
+      { start:"14:00", end:"14:15", title:"Giveaways from Stage", who:"", loc:"Main Ballroom",
+        desc:"Doors reopen and we give things away. Be in the room." },
+      { start:"14:15", end:"15:15", title:"Hormones, Thyroid &amp; Midlife Energy", who:"Dr. Amie Hornaman", loc:"Main Ballroom",
         desc:"Why you feel tired but wired, and what actually works." },
-      { start:"15:45", end:"16:00", title:"Break", brk:true, who:"", loc:"", desc:"" },
-      { start:"16:00", end:"17:00", title:"Intimacy, Relationships &amp; Vibrancy", who:"Maraya Brown", loc:"",
+      { start:"15:15", end:"16:00", title:"Intimacy, Relationships &amp; Vibrancy", who:"Maraya Brown", loc:"Main Ballroom",
         desc:"An experiential session on falling back in love with your life. For men and women who want passion and zest back." },
-      { start:"17:00", end:"18:00", title:"Keynote Part I: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"",
+      { start:"16:00", end:"16:30", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
+        desc:"More time in the Vendor Hall &mdash; massage, acupuncture, cold plunge, and the doctors and health experts." },
+      { start:"16:45", end:"17:55", title:"Keynote Part I: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"Main Ballroom",
         desc:"His most advanced strategies for cultivating energy and healthspan for life." },
-      { start:"18:15", end:"19:00", title:"VIP Book Signing", who:"", loc:"",
-        desc:"VIPs meet the speakers up close and get books signed." },
-      { start:"19:30", title:"Sunset Pool Party", who:"", loc:"", opt:true,
+      { start:"18:00", end:"19:00", title:"VIP Book Signing", who:"", loc:"Main Ballroom",
+        desc:"VIPs only &mdash; meet the speakers up close and get books signed." },
+      { start:"19:00", end:"20:00", title:"Sunset Pool Party", who:"", loc:"", opt:true,
         desc:"Poolside at the Arizona Grand, where the room becomes family." }
     ]
   },
@@ -501,7 +507,8 @@ const SCHEDULE = [
         desc:"Opens the heart for the integration work ahead, flowing into the morning&rsquo;s transformation session." },
       { start:"09:30", end:"10:45", title:"Transformational Coaching", who:"Natalie Hunter", loc:"",
         desc:"Get clear on the vision for your next self &mdash; and the inner resources to live it." },
-      { start:"10:45", end:"11:00", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"10:45", end:"11:00", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
+        desc:"Connect in the Vendor Hall &mdash; massage, acupuncture, cold plunge, and time with the doctors and health experts." },
       { start:"11:00", end:"12:00", title:"Keynote Part II: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"",
         desc:"His most advanced practices for lasting energy and healthspan." },
       { start:"12:00", end:"13:15", title:"Final Connection Lunch", who:"", loc:"",
@@ -565,7 +572,6 @@ SCHEDULE.forEach((day, i) => {
     day.items.map((s, j) => {
       const cls = ["session"];
       if (s.opt) cls.push("is-optional");
-      if (s.brk) cls.push("is-break");
       return `<article class="${cls.join(" ")}" data-day="${i}" data-idx="${j}">
         <div class="s-time">${label(s.start)}${s.end ? `<span class="to">to ${label(s.end)}</span>` : ""}</div>
         <div class="s-body">
