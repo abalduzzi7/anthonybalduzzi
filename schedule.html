@@ -346,37 +346,11 @@
   <div class="extras">
 
     <details>
-      <summary>Morning Movement &middot; 7:00 AM</summary>
+      <summary>Where to Eat &middot; Breakfast &amp; Dinner</summary>
       <div class="details-body">
-        <p>Optional, and where the weekend&rsquo;s energy starts. Roll out of bed, come as you are &mdash;
-           you&rsquo;ll have time to shower before doors open at 8:30.</p>
-        <table class="rows">
-          <tr><td>Friday</td><td>Resort walk &mdash; an easy group walk around the Arizona Grand.</td></tr>
-          <tr><td>Saturday</td><td>Cold plunge &amp; qigong with Troy Casey.</td></tr>
-          <tr><td>Sunday</td><td>Strength circuit with Paige Kelly. Weighted vests provided.</td></tr>
-        </table>
-      </div>
-    </details>
-
-    <details>
-      <summary>Lunch &amp; Meals</summary>
-      <div class="details-body">
-        <p><strong>Lunch is served daily, 1:00&ndash;2:30 PM.</strong></p>
-        <table class="rows">
-          <tr><td>VIP</td><td>Private lunch with Dr. Balduzzi.</td></tr>
-          <tr><td>GA+</td><td>Healthy buffet lunch (protein &amp; veggies) with fellow GA+ guests.</td></tr>
-          <tr><td>GA</td><td>Lunch not included.</td></tr>
-        </table>
-        <div class="note"><strong>Coffee is on us.</strong> There&rsquo;s coffee in the vendor hall each morning &mdash; grab a cup on your way in.</div>
-        <p style="margin-top:14px">Breakfast and dinner are on your own &mdash; see <strong>Where to Eat</strong> below.
-           Your suite has a mini-fridge and water. Water stations run throughout the venue all day.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>Where to Eat</summary>
-      <div class="details-body">
-        <h4 style="font-family:var(--label);font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bronze);margin:0 0 8px">On-site at the Arizona Grand</h4>
+        <p>Breakfast and dinner are on your own. Your suite has a mini-fridge and water,
+           and water stations run throughout the venue all day.</p>
+        <h4 style="font-family:var(--label);font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bronze);margin:14px 0 8px">On-site at the Arizona Grand</h4>
         <table class="rows" style="margin-bottom:18px">
           <tr><td>Lobby Grill</td><td>Breakfast daily 6:30&ndash;11 AM, Starbucks coffee from 6 AM, all-day dining and dinner until 10 PM.</td></tr>
           <tr><td>In-Suite Dining</td><td>Breakfast 6:30&ndash;11 AM delivered to your room &mdash; avocado toast, eggs, huevos rancheros.</td></tr>
@@ -405,6 +379,33 @@
           </div>
         </div>
         <div class="note"><strong>Delivery to the resort.</strong> Uber Eats, DoorDash, and Postmates all deliver to the Arizona Grand &mdash; handy for a late dinner or for stocking your suite fridge.</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Lunch &amp; Meals</summary>
+      <div class="details-body">
+        <p><strong>Lunch is served daily, 1:00&ndash;2:30 PM.</strong> GA+ and VIP each have their
+           own lunch &mdash; check your badge.</p>
+        <table class="rows">
+          <tr><td>VIP</td><td>Private lunch with Dr. Balduzzi.</td></tr>
+          <tr><td>GA+</td><td>Healthy buffet lunch (protein &amp; veggies) with fellow GA+ guests.</td></tr>
+          <tr><td>GA</td><td>Lunch not included.</td></tr>
+        </table>
+        <div class="note"><strong>Coffee is on us.</strong> There&rsquo;s coffee in the vendor hall each morning &mdash; grab a cup on your way in.</div>
+      </div>
+    </details>
+
+    <details>
+      <summary>Morning Movement</summary>
+      <div class="details-body">
+        <p>Optional, and where the weekend&rsquo;s energy starts. Roll out of bed, come as you are &mdash;
+           you&rsquo;ll have time to shower before doors open at 8:30.</p>
+        <table class="rows">
+          <tr><td>Friday &middot; 6:30 AM</td><td>Resort walk around the Arizona Grand Trails. Meet at the Arizona Grand Lobby.</td></tr>
+          <tr><td>Saturday &middot; 7:00 AM</td><td>Cold plunge &amp; qigong with Troy Casey.</td></tr>
+          <tr><td>Sunday &middot; 7:00 AM</td><td>Strength circuit with Paige Kelly. Weighted vests provided.</td></tr>
+        </table>
       </div>
     </details>
 
@@ -438,26 +439,24 @@ const SCHEDULE = [
     name: "Day One &middot; Awareness",
     theme: "Get clear on the patterns running your life. Open up to new possibilities and friendships.",
     items: [
-      { start:"07:00", end:"07:50", title:"Morning Movement &middot; Resort Walk", who:"", loc:"", opt:true,
-        desc:"Start the day with an easy group walk around the Arizona Grand before doors open." },
-      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"",
+      { start:"06:30", end:"07:20", title:"Morning Movement &middot; Resort Walk", who:"", loc:"Meet at Arizona Grand Lobby", opt:true,
+        desc:"Start the day with an easy group walk around the Arizona Grand Trails before doors open to the event." },
+      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"Vendor Hall",
         desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
-      { start:"09:00", end:"11:00", title:"Welcome &amp; Opening Keynote", who:"Dr. Anthony Balduzzi &amp; Dr. Jamil Sayegh", loc:"",
+      { start:"09:00", end:"10:15", title:"Welcome &amp; Opening Keynote", who:"Dr. Anthony Balduzzi &amp; Dr. Jamil Sayegh", loc:"Main Ballroom",
         desc:"Waking up to the rest of your life." },
-      { start:"11:00", end:"11:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
-      { start:"11:15", end:"13:00", title:"Movement Breakouts", who:"", loc:"",
-        desc:"Stretching, breathwork, workouts. Pick what feels right. Gentle &mdash; these won&rsquo;t leave you sweaty." },
+      { start:"10:15", end:"11:00", title:"Break", brk:true, who:"", loc:"Vendor Hall", desc:"" },
+      { start:"11:00", end:"12:00", title:"Movement Breakouts", who:"", loc:"",
+        desc:"Two tracks, run back to back &mdash; you&rsquo;ll do both. <strong>Track A:</strong> guided vibration &amp; myofascial massage with Rapid Release. <strong>Track B:</strong> guided breathwork experience with Michael Roviello. Your badge shows which track you start with." },
       { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"",
-        desc:"Real healthy food, real conversations, no compromises." },
-      { start:"14:30", end:"16:00", title:"Intentional Living Workshop", who:"Dr. Anthony Balduzzi", loc:"",
-        desc:"Evaluating your life, breaking bad habits, and creating your next vision." },
-      { start:"16:00", end:"16:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
-      { start:"16:15", end:"17:15", title:"Health Experts Panel", who:"Dr. Philip Ovadia, Dylan Gemelli &amp; Troy Casey", loc:"",
+        desc:"Real healthy food, real conversations, no compromises. GA+ and VIP each have their own lunch &mdash; check your badge." },
+      { start:"14:30", end:"16:30", title:"Health Experts Q&amp;A Panel", who:"Dr. Philip Ovadia, Troy Casey &amp; Dylan Gemelli", loc:"Main Ballroom",
         desc:"Each shares a short presentation on what&rsquo;s actually working, then joins Dr. Balduzzi on stage for an open Q&amp;A." },
-      { start:"17:15", end:"18:00", title:"Thriving at 90 Keynote", who:"Jim Flaherty", loc:"",
-        desc:"How he&rsquo;s thriving at 90." },
-      { start:"18:15", end:"19:15", title:"Kava Happy Hour", who:"", loc:"", opt:true,
-        desc:"Zero alcohol, deep conversations, where new friendships start." }
+      { start:"16:30", end:"17:00", title:"Break", brk:true, who:"", loc:"Vendor Hall", desc:"" },
+      { start:"17:00", end:"18:00", title:"Thriving at 90 Keynote", who:"Jim Flaherty", loc:"Main Ballroom",
+        desc:"The final keynote of the day. Jim is 90 &mdash; here&rsquo;s how he&rsquo;s thriving." },
+      { start:"18:00", end:"19:00", title:"Alcohol-Free Happy Hour", who:"", loc:"", opt:true,
+        desc:"Sponsored by True Kava. Zero alcohol, deep conversations, where new friendships start. Then we break for the day." }
     ]
   },
   {
