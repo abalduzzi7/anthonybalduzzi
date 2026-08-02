@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Schedule · Breakthrough in the Desert 2026</title>
+<meta name="description" content="Full session schedule for Breakthrough in the Desert, August 7-9 2026 at the Arizona Grand Resort, Phoenix AZ." />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://event.fitfatherproject.com/schedule" />
+<link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta name="theme-color" content="#1B1916" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================================
+  HOW TO UPDATE THIS PAGE
+  ============================================================================
+  Everything attendees see lives in the SCHEDULE object in the <script> block
+  at the bottom. Edit that, save, push. Nothing else needs touching.
+
+  To change a session:   find it in SCHEDULE and edit the fields.
+  To add a room name:    fill in  loc: ""  -> loc: "Main Ballroom"
+                         (an empty loc simply renders nothing, no broken layout)
+  To add/remove a session: add or delete an object in that day's items array.
+  To drop a whole day:   delete the day object. The tabs adjust automatically.
+
+  Times are 24-hour "HH:MM". The am/pm label shown to attendees is generated
+  from them, so there is only ever ONE place to edit a time and no way for the
+  label and the sort order to disagree.
+
+  end: is optional - leave it off for open-ended things like the pool party.
+  ============================================================================
+-->
+
+<style>
+  :root {
+    --ink: #1B1916;
+    --ink-soft: #2A2723;
+    --bone: #EBE3D4;
+    --bone-soft: #F4EFE3;
+    --plaster: #E2D8C2;
+    --sandstone: #CDB99A;
+    --umber: #5A4631;
+    --pinyon: #878A76;
+    --ember: #A8502E;
+    --ember-warm: #C56638;
+    --bronze: #8A6A3E;
+    --gold: #D8B87A;
+    --gold-soft: #E8CC93;
+    --display: 'Newsreader', Georgia, serif;
+    --body: 'Spectral', Georgia, serif;
+    --label: 'Schibsted Grotesk', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bone-soft);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------------------------------------------------------------- header */
+  header {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 30px 0 26px;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: var(--label);
+    font-size: 10.5px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.03;
+    letter-spacing: -.02em;
+    margin: 0;
+  }
+  h1 em { font-style: italic; color: var(--gold-soft); font-weight: 400; }
+  .venue {
+    font-family: var(--label);
+    font-size: 11px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--sandstone);
+    margin: 14px 0 0;
+  }
+
+  /* ------------------------------------------------------------ day tabs */
+  .tabs {
+    position: sticky; top: 0; z-index: 20;
+    display: flex; gap: 6px;
+    background: var(--bone-soft);
+    padding: 10px 20px;
+    max-width: 760px; margin: 0 auto;
+    border-bottom: 1px solid var(--plaster);
+  }
+  .tab {
+    flex: 1;
+    appearance: none;
+    border: 1px solid var(--plaster);
+    background: transparent;
+    color: var(--umber);
+    font-family: var(--label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 11px 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    line-height: 1.25;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .tab span { display: block; font-size: 10px; font-weight: 400; letter-spacing: .04em; opacity: .72; margin-top: 3px; }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .tab:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+  /* ------------------------------------------------------------- day intro */
+  .day-intro { padding: 26px 0 4px; }
+  .day-name {
+    font-family: var(--display);
+    font-size: clamp(26px, 6.5vw, 34px);
+    font-weight: 500;
+    margin: 0 0 6px;
+    letter-spacing: -.015em;
+  }
+  .day-theme {
+    font-family: var(--body);
+    font-style: italic;
+    color: var(--umber);
+    margin: 0;
+    font-size: 16px;
+    border-left: 2px solid var(--gold);
+    padding-left: 12px;
+  }
+
+  /* --------------------------------------------------------------- session */
+  .session {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 0 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--plaster);
+  }
+  .session:last-child { border-bottom: 0; }
+
+  .s-time {
+    font-family: var(--label);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ember);
+    letter-spacing: .02em;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .s-time .to { display: block; font-weight: 400; color: var(--pinyon); font-size: 11.5px; }
+
+  .s-title {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 3px;
+    line-height: 1.25;
+  }
+  .s-who {
+    font-family: var(--label);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--bronze);
+    margin: 0 0 6px;
+  }
+  .s-desc { margin: 0; font-size: 15.5px; color: var(--ink-soft); line-height: 1.48; }
+  .s-loc {
+    display: inline-block;
+    font-family: var(--label);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--umber);
+    background: var(--plaster);
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  /* optional + break styling: present but visually recessive */
+  .session.is-optional .s-title { font-weight: 500; }
+  .tag-optional {
+    font-family: var(--label); font-size: 9.5px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--pinyon); border: 1px solid var(--sandstone);
+    padding: 1px 5px; border-radius: 2px; margin-left: 7px;
+    vertical-align: 2px; white-space: nowrap;
+  }
+  .session.is-break { padding: 11px 0; opacity: .62; }
+  .session.is-break .s-title { font-size: 15px; font-weight: 400; font-family: var(--body); font-style: italic; }
+
+  /* ---------------------------------------------------------------- "now" */
+  .session.is-now {
+    background: #FFF8E8;
+    box-shadow: inset 3px 0 0 var(--ember);
+    padding-left: 14px;
+    margin-left: -14px;
+    border-radius: 2px;
+  }
+  .now-badge {
+    display: inline-block;
+    font-family: var(--label); font-size: 9.5px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: var(--ember); color: #fff;
+    padding: 2px 7px; border-radius: 2px;
+    margin-bottom: 6px;
+  }
+  .now-badge::before {
+    content: ""; display: inline-block;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #fff; margin-right: 5px; vertical-align: 1px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+  @media (prefers-reduced-motion: reduce) { .now-badge::before { animation: none; } }
+
+  /* --------------------------------------------------------------- extras */
+  .extras { margin: 34px 0 0; }
+  details {
+    border-top: 1px solid var(--plaster);
+    padding: 0;
+  }
+  details:last-of-type { border-bottom: 1px solid var(--plaster); }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 26px 16px 0;
+    font-family: var(--label);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--umber);
+    position: relative;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+";
+    position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    font-size: 19px; font-weight: 400; color: var(--sandstone);
+  }
+  details[open] summary::after { content: "\2013"; }
+  summary:focus-visible { outline: 2px solid var(--ember); outline-offset: -2px; }
+  .details-body { padding: 0 0 20px; font-size: 15.5px; }
+  .details-body p { margin: 0 0 12px; }
+  .details-body p:last-child { margin-bottom: 0; }
+  .details-body strong { font-weight: 600; }
+  .rows { width: 100%; border-collapse: collapse; }
+  .rows td { padding: 8px 0; border-bottom: 1px solid var(--plaster); vertical-align: top; font-size: 15px; }
+  .rows tr:last-child td { border-bottom: 0; }
+  .rows td:first-child { width: 34%; padding-right: 14px; font-weight: 600; }
+  .eat-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 26px; }
+  @media (max-width: 560px) { .eat-cols { grid-template-columns: 1fr; gap: 18px; } }
+  .eat-cols h4 {
+    font-family: var(--label); font-size: 10.5px; font-weight: 700;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--bronze);
+    margin: 0 0 8px;
+  }
+  .eat-cols ul { margin: 0; padding-left: 17px; }
+  .eat-cols li { margin-bottom: 6px; font-size: 14.5px; }
+  .note {
+    background: var(--plaster); border-left: 3px solid var(--gold);
+    padding: 12px 14px; margin: 14px 0 0; font-size: 14.5px;
+  }
+
+  /* --------------------------------------------------------------- footer */
+  footer {
+    background: var(--ink); color: var(--sandstone);
+    margin-top: 42px; padding: 30px 0 36px; text-align: center;
+  }
+  footer .f-title {
+    font-family: var(--display); font-size: 20px;
+    color: var(--bone); margin: 0 0 12px; font-weight: 500;
+  }
+  footer p { margin: 0 0 7px; font-size: 15px; }
+  footer a { color: var(--gold-soft); text-decoration: none; border-bottom: 1px solid rgba(216,184,122,.4); }
+  .help {
+    display: inline-block; margin-top: 6px;
+    font-family: var(--label); font-size: 15px; font-weight: 600;
+    background: var(--ember); color: #fff;
+    padding: 12px 22px; border-radius: 3px;
+    text-decoration: none; border: 0;
+  }
+  .f-meta {
+    font-family: var(--label); font-size: 10.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--umber); margin-top: 20px;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    .session { grid-template-columns: 76px 1fr; gap: 0 12px; }
+    .s-time { font-size: 11.5px; }
+    .s-title { font-size: 17.5px; }
+    .s-desc { font-size: 14.5px; }
+  }
+
+  @media print {
+    .tabs, footer .help { display: none; }
+    .day-panel { display: block !important; page-break-after: always; }
+    details { border: 0; } details > summary { display: none; }
+    .details-body { display: block !important; }
+    body { background: #fff; font-size: 11pt; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Event Schedule</p>
+    <h1>Breakthrough <em>in the Desert</em></h1>
+    <p class="venue">August 7&ndash;9, 2026 &middot; Arizona Grand Resort</p>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" role="tablist" aria-label="Choose a day"></nav>
+
+<main class="wrap" id="days"></main>
+
+<div class="wrap">
+  <div class="extras">
+
+    <details>
+      <summary>Morning Movement &middot; 7:00 AM</summary>
+      <div class="details-body">
+        <p>Optional, and where the weekend&rsquo;s energy starts. Roll out of bed, come as you are &mdash;
+           you&rsquo;ll have time to shower before doors open at 8:30.</p>
+        <table class="rows">
+          <tr><td>Friday</td><td>Resort walk &mdash; an easy group walk around the Arizona Grand.</td></tr>
+          <tr><td>Saturday</td><td>Cold plunge &amp; qigong with Troy Casey.</td></tr>
+          <tr><td>Sunday</td><td>Strength circuit with Paige Kelly. Weighted vests provided.</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details>
+      <summary>Lunch &amp; Meals</summary>
+      <div class="details-body">
+        <p><strong>Lunch is served daily, 1:00&ndash;2:30 PM.</strong></p>
+        <table class="rows">
+          <tr><td>VIP</td><td>Private lunch with Dr. Balduzzi.</td></tr>
+          <tr><td>GA+</td><td>Healthy buffet lunch (protein &amp; veggies) with fellow GA+ guests.</td></tr>
+          <tr><td>GA</td><td>Lunch not included.</td></tr>
+        </table>
+        <div class="note"><strong>Coffee is on us.</strong> There&rsquo;s coffee in the vendor hall each morning &mdash; grab a cup on your way in.</div>
+        <p style="margin-top:14px">Breakfast and dinner are on your own &mdash; see <strong>Where to Eat</strong> below.
+           Your suite has a mini-fridge and water. Water stations run throughout the venue all day.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Where to Eat</summary>
+      <div class="details-body">
+        <h4 style="font-family:var(--label);font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--bronze);margin:0 0 8px">On-site at the Arizona Grand</h4>
+        <table class="rows" style="margin-bottom:18px">
+          <tr><td>Lobby Grill</td><td>Breakfast daily 6:30&ndash;11 AM, Starbucks coffee from 6 AM, all-day dining and dinner until 10 PM.</td></tr>
+          <tr><td>In-Suite Dining</td><td>Breakfast 6:30&ndash;11 AM delivered to your room &mdash; avocado toast, eggs, huevos rancheros.</td></tr>
+          <tr><td>Aunt Chilada&rsquo;s</td><td>Neighborhood Mexican &mdash; street tacos, fajitas, and patios.</td></tr>
+          <tr><td>Oasis Bar &amp; Grill</td><td>Poolside comfort fare at the water park.</td></tr>
+        </table>
+        <div class="eat-cols">
+          <div>
+            <h4>Healthy Breakfast Nearby</h4>
+            <ul>
+              <li><strong>First Watch</strong> (Ahwatukee) &mdash; A.M. Superfoods Bowl, veggie-forward, GF/vegan options</li>
+              <li><strong>Snooze, an A.M. Eatery</strong> &mdash; creative brunch with lighter plates</li>
+              <li><strong>Jewel&rsquo;s Bakery &amp; Caf&eacute;</strong> &mdash; gluten-free bakery &amp; breakfast</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Healthy Lunch &amp; Dinner Nearby</h4>
+            <ul>
+              <li><strong>True Food Kitchen</strong> (Tempe) &mdash; clean, chef-crafted, seasonal</li>
+              <li><strong>Pita Bistro</strong> &mdash; Mediterranean bowls, wraps &amp; salads</li>
+              <li><strong>MAD Greens</strong> &mdash; build-your-own bowls &amp; salads</li>
+              <li><strong>Salad and Go</strong> &mdash; drive-thru salads, fast &amp; affordable</li>
+              <li><strong>Playa Bowls</strong> &mdash; a&ccedil;a&iacute; &amp; smoothie bowls</li>
+              <li><strong>Feta Cowboy</strong> &mdash; build-your-own protein bowls</li>
+            </ul>
+          </div>
+        </div>
+        <div class="note"><strong>Delivery to the resort.</strong> Uber Eats, DoorDash, and Postmates all deliver to the Arizona Grand &mdash; handy for a late dinner or for stocking your suite fridge.</div>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="f-title">Need help during the event?</p>
+    <p>Text our event coordinator, Lauren Davis:</p>
+    <p><a class="help" href="sms:+15037072644">Text 503-707-2644</a></p>
+    <p style="margin-top:16px">Or email <a href="mailto:support@fitfatherproject.com">support@fitfatherproject.com</a></p>
+    <p class="f-meta">Breakthrough in the Desert &middot; Arizona Grand Resort &middot; Phoenix, AZ</p>
+  </div>
+</footer>
+
+<script>
+/* ===========================================================================
+   THE SCHEDULE. This is the only thing you need to edit.
+   -------------------------------------------------------------------------
+   date  : "YYYY-MM-DD" - drives which day auto-opens (Arizona time)
+   start : "HH:MM" 24-hour.  end: optional.
+   who   : presenter(s). Leave "" for things with no presenter.
+   loc   : room name. Leave "" and nothing renders - no broken layout.
+   opt   : true  -> shows an "Optional" tag
+   brk   : true  -> renders as a recessive break row
+   =========================================================================== */
+const SCHEDULE = [
+  {
+    date: "2026-08-07", tab: "Fri", tabDate: "Aug 7",
+    name: "Day One &middot; Awareness",
+    theme: "Get clear on the patterns running your life. Open up to new possibilities and friendships.",
+    items: [
+      { start:"07:00", end:"07:50", title:"Morning Movement &middot; Resort Walk", who:"", loc:"", opt:true,
+        desc:"Start the day with an easy group walk around the Arizona Grand before doors open." },
+      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"",
+        desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
+      { start:"09:00", end:"11:00", title:"Welcome &amp; Opening Keynote", who:"Dr. Anthony Balduzzi &amp; Dr. Jamil Sayegh", loc:"",
+        desc:"Waking up to the rest of your life." },
+      { start:"11:00", end:"11:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"11:15", end:"13:00", title:"Movement Breakouts", who:"", loc:"",
+        desc:"Stretching, breathwork, workouts. Pick what feels right. Gentle &mdash; these won&rsquo;t leave you sweaty." },
+      { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"",
+        desc:"Real healthy food, real conversations, no compromises." },
+      { start:"14:30", end:"16:00", title:"Intentional Living Workshop", who:"Dr. Anthony Balduzzi", loc:"",
+        desc:"Evaluating your life, breaking bad habits, and creating your next vision." },
+      { start:"16:00", end:"16:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"16:15", end:"17:15", title:"Health Experts Panel", who:"Dr. Philip Ovadia, Dylan Gemelli &amp; Troy Casey", loc:"",
+        desc:"Each shares a short presentation on what&rsquo;s actually working, then joins Dr. Balduzzi on stage for an open Q&amp;A." },
+      { start:"17:15", end:"18:00", title:"Thriving at 90 Keynote", who:"Jim Flaherty", loc:"",
+        desc:"How he&rsquo;s thriving at 90." },
+      { start:"18:15", end:"19:15", title:"Kava Happy Hour", who:"", loc:"", opt:true,
+        desc:"Zero alcohol, deep conversations, where new friendships start." }
+    ]
+  },
+  {
+    date: "2026-08-08", tab: "Sat", tabDate: "Aug 8",
+    name: "Day Two &middot; Vitality",
+    theme: "Reclaim your energy. Learn the science of hormones, heart health, and lifelong vitality.",
+    items: [
+      { start:"07:00", end:"07:50", title:"Cold Plunge &amp; Morning Qigong", who:"Troy Casey", loc:"", opt:true,
+        desc:"For those who want to start the day cracked open." },
+      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"",
+        desc:"Coffee, mingling, and vendor experiences to explore." },
+      { start:"09:00", end:"11:00", title:"Inner Transformation &amp; Healing Workshop", who:"Dr. Jamil Sayegh", loc:"",
+        desc:"Release the blockages creating physical and emotional pain, so you can step into your strongest, most alive self." },
+      { start:"11:00", end:"11:15", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"11:15", end:"13:00", title:"Somatic Breathwork", who:"", loc:"",
+        desc:"A group session reconnecting with your body and finding true relaxation." },
+      { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"",
+        desc:"Real food and real conversations with the people walking this with you." },
+      { start:"14:30", end:"15:45", title:"Hormones, Thyroid &amp; Midlife Energy", who:"Dr. Amie Hornaman", loc:"",
+        desc:"Why you feel tired but wired, and what actually works." },
+      { start:"15:45", end:"16:00", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"16:00", end:"17:00", title:"Intimacy, Relationships &amp; Vibrancy", who:"Maraya Brown", loc:"",
+        desc:"An experiential session on falling back in love with your life. For men and women who want passion and zest back." },
+      { start:"17:00", end:"18:00", title:"Keynote Part I: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"",
+        desc:"His most advanced strategies for cultivating energy and healthspan for life." },
+      { start:"18:15", end:"19:00", title:"VIP Book Signing", who:"", loc:"",
+        desc:"VIPs meet the speakers up close and get books signed." },
+      { start:"19:30", title:"Sunset Pool Party", who:"", loc:"", opt:true,
+        desc:"Poolside at the Arizona Grand, where the room becomes family." }
+    ]
+  },
+  {
+    date: "2026-08-09", tab: "Sun", tabDate: "Aug 9",
+    name: "Day Three &middot; Integration",
+    theme: "Distill the weekend into a clear plan you can live for the rest of your life, with an open heart.",
+    items: [
+      { start:"07:00", end:"07:50", title:"Morning Strength Circuit", who:"Paige Kelly", loc:"", opt:true,
+        desc:"A fun, energizing circuit &mdash; body-weight movements and Pilates-inspired flow. Weighted vests available." },
+      { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"",
+        desc:"Coffee, mingling, and vendor experiences to explore." },
+      { start:"09:00", end:"09:30", title:"Cacao Ceremony", who:"Makenzie Marzluff", loc:"",
+        desc:"Opens the heart for the integration work ahead, flowing into the morning&rsquo;s transformation session." },
+      { start:"09:30", end:"10:45", title:"Transformational Coaching", who:"Natalie Hunter", loc:"",
+        desc:"Get clear on the vision for your next self &mdash; and the inner resources to live it." },
+      { start:"10:45", end:"11:00", title:"Break", brk:true, who:"", loc:"", desc:"" },
+      { start:"11:00", end:"12:00", title:"Keynote Part II: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"",
+        desc:"His most advanced practices for lasting energy and healthspan." },
+      { start:"12:00", end:"13:15", title:"Final Connection Lunch", who:"", loc:"",
+        desc:"With the people who are now your community." },
+      { start:"13:15", end:"14:15", title:"Clarity &amp; 90-Day Game Plan", who:"Dr. Anthony Balduzzi", loc:"",
+        desc:"Distilling the weekend into a clear 90-day plan &mdash; and the inner resolve and safety to follow through." },
+      { start:"14:15", end:"15:00", title:"Event Integration &amp; Guided Meditation", who:"Amber Mikesell &amp; Austin Uhl", loc:"",
+        desc:"More than a meditation &mdash; integrating the weekend&rsquo;s insights and bringing you into deeper connection before you head home." },
+      { start:"15:00", end:"16:00", title:"Closing Ceremony", who:"Dr. Anthony Balduzzi", loc:"",
+        desc:"Closing the weekend and sending you off into the next chapter of your life." }
+    ]
+  }
+];
+
+/* ------------------------------------------------------------------ render */
+
+const pad = n => String(n).padStart(2, "0");
+const mins = hhmm => { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; };
+
+function label(hhmm) {
+  let [h, m] = hhmm.split(":").map(Number);
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 || 12;
+  return m === 0 ? `${h} ${ap}` : `${h}:${pad(m)} ${ap}`;
+}
+
+/* Arizona does not observe DST, but asking Intl for America/Phoenix keeps this
+   correct without hard-coding a UTC offset. */
+function phoenixNow() {
+  const p = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Phoenix", year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false
+  }).formatToParts(new Date()).reduce((a, x) => (a[x.type] = x.value, a), {});
+  return { date: `${p.year}-${p.month}-${p.day}`, minutes: (+p.hour % 24) * 60 + +p.minute };
+}
+
+const tabsEl = document.getElementById("tabs");
+const daysEl = document.getElementById("days");
+
+SCHEDULE.forEach((day, i) => {
+  const t = document.createElement("button");
+  t.className = "tab";
+  t.type = "button";
+  t.setAttribute("role", "tab");
+  t.setAttribute("aria-selected", "false");
+  t.setAttribute("aria-controls", `panel-${i}`);
+  t.innerHTML = `${day.tab}<span>${day.tabDate}</span>`;
+  t.addEventListener("click", () => select(i));
+  tabsEl.appendChild(t);
+
+  const panel = document.createElement("section");
+  panel.className = "day-panel";
+  panel.id = `panel-${i}`;
+  panel.setAttribute("role", "tabpanel");
+  panel.hidden = true;
+  panel.innerHTML =
+    `<div class="day-intro">
+       <h2 class="day-name">${day.name}</h2>
+       <p class="day-theme">${day.theme}</p>
+     </div>` +
+    day.items.map((s, j) => {
+      const cls = ["session"];
+      if (s.opt) cls.push("is-optional");
+      if (s.brk) cls.push("is-break");
+      return `<article class="${cls.join(" ")}" data-day="${i}" data-idx="${j}">
+        <div class="s-time">${label(s.start)}${s.end ? `<span class="to">to ${label(s.end)}</span>` : ""}</div>
+        <div class="s-body">
+          <h3 class="s-title">${s.title}${s.opt ? '<span class="tag-optional">Optional</span>' : ""}</h3>
+          ${s.who ? `<p class="s-who">${s.who}</p>` : ""}
+          ${s.desc ? `<p class="s-desc">${s.desc}</p>` : ""}
+          ${s.loc ? `<span class="s-loc">${s.loc}</span>` : ""}
+        </div>
+      </article>`;
+    }).join("");
+  daysEl.appendChild(panel);
+});
+
+function select(i) {
+  [...tabsEl.children].forEach((t, k) => t.setAttribute("aria-selected", k === i ? "true" : "false"));
+  [...daysEl.children].forEach((p, k) => p.hidden = k !== i);
+}
+
+/* Highlight the session happening right now, and only on the real day. */
+function markNow() {
+  const now = phoenixNow();
+  document.querySelectorAll(".session.is-now").forEach(el => {
+    el.classList.remove("is-now");
+    const b = el.querySelector(".now-badge");
+    if (b) b.remove();
+  });
+  const di = SCHEDULE.findIndex(d => d.date === now.date);
+  if (di < 0) return;
+  SCHEDULE[di].items.forEach((s, j) => {
+    const end = s.end ? mins(s.end) : mins(s.start) + 60;
+    if (now.minutes < mins(s.start) || now.minutes >= end) return;
+    const el = document.querySelector(`.session[data-day="${di}"][data-idx="${j}"]`);
+    if (!el) return;
+    el.classList.add("is-now");
+    const b = document.createElement("span");
+    b.className = "now-badge";
+    b.textContent = "Happening now";
+    el.querySelector(".s-body").prepend(b);
+  });
+}
+
+/* Open on today if the event is running; otherwise open on Day One. */
+const today = phoenixNow().date;
+const idx = SCHEDULE.findIndex(d => d.date === today);
+select(idx >= 0 ? idx : 0);
+markNow();
+setInterval(markNow, 60000);
+</script>
+
+</body>
+</html>
