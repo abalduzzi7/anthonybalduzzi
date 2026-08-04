@@ -81,7 +81,7 @@
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-06-23T00:00:00-07:00",
-          "validThrough": "2026-07-20T00:00:00-07:00",
+          "validThrough": "2026-08-09T16:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "GA+"
         },
@@ -92,7 +92,7 @@
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-06-23T00:00:00-07:00",
-          "validThrough": "2026-07-20T00:00:00-07:00",
+          "validThrough": "2026-08-09T16:00:00-07:00",
           "url": "https://event.fitfatherproject.com/#pricing",
           "category": "VIP"
         }
@@ -3393,6 +3393,15 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
    To revert: delete this entire block (between the FLASH SALE markers).
    ==================================================================== */
 /* FLASH SALE: countdown bar sale badge */
+.countdown-bar #countdown { white-space: nowrap; }
+/* The qualifier is useful on desktop but pushes the bar to three lines on a
+   phone, so it drops out below 600px. */
+@media (max-width: 600px) { .countdown-bar .cd-long { display: none; } }
+.countdown-bar .cd-link {
+  color: var(--gold); text-decoration: none; font-weight: 600;
+  border-bottom: 1px solid rgba(216,184,122,.45); white-space: nowrap;
+}
+.countdown-bar .cd-link:hover { color: var(--gold-soft); border-bottom-color: var(--gold-soft); }
 .countdown-bar .sale-badge {
   display: inline-block;
   background: var(--ember);
@@ -3564,8 +3573,9 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <span class="sep">·</span>
   <strong>150 seats</strong>
   <span class="sep">·</span>
-  <strong>Sale ends:</strong>
-  <span id="countdown">Sun, July 19 (midnight AZ)</span>
+  <span id="countdown">August 7&ndash;9, 2026</span>
+  <span class="sep">&middot;</span>
+  <a class="cd-link" href="schedule">View the<span class="cd-long"> full</span> event schedule &rarr;</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -3858,7 +3868,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="social-cta">
       <a href="#pricing" class="btn-halo">Hold a seat before July 19 <span class="arrow">→</span></a>
-      <div class="social-cta-meta">Summer Launch pricing ends Sunday, July 19</div>
+      <div class="social-cta-meta">August 7&ndash;9, 2026 &middot; Arizona Grand Resort</div>
     </div>
   </div>
 </section>
@@ -4041,7 +4051,10 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <div class="container-wide">
     <div class="eyebrow">Reserve Your Spot</div>
     <h2 class="section-title">Two tickets. <em>One Breakthrough.</em></h2>
-    <!-- FLASH SALE: Pricing deadline replaced with Summer Launch messaging. Original: "Early-bird pricing ends Sunday, June 21, 2026 — Father's Day." -->
+    <!-- Pricing no longer expires (2026-08-04). Tier taglines state the saving
+         rather than a deadline. Do not reintroduce a dated deadline here unless
+         a new sale is actually running — a passed date makes the bar and these
+         taglines tell visitors the offer is over. -->
     <div class="pricing-deadline flash-sale">
       <span class="sale-pill">Summer Launch Pricing</span>
       Save $250+ when you reserve before <strong>Sunday, July 19 (midnight AZ)</strong>. After that, prices return to full early-bird.
@@ -4063,7 +4076,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="price-strike">$845</span>
           <span class="save-badge">Save $248</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
+        <div class="tier-tagline">Save $250+ off standard pricing</div>
         <div class="tier-summary">The full Breakthrough experience. Three days, all in.</div>
         <ul class="tier-features">
           <li>All three days of keynotes, workshops, and main-stage sessions</li>
@@ -4089,7 +4102,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
           <span class="price-strike">$1,295</span>
           <span class="save-badge">Save $296</span>
         </div>
-        <div class="tier-tagline">Summer launch ends Sunday, July 19 (midnight AZ)</div>
+        <div class="tier-tagline">Save $250+ off standard pricing</div>
         <div class="tier-summary">Everything in GA+, plus front-row access to the speakers, the experience, and Dr. Anthony.</div>
         <ul class="tier-features">
           <li><strong>Front-row, priority seating</strong> in all main stage sessions</li>
@@ -4210,7 +4223,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="tagline">Three Days.<br>One Breakthrough.<br>The Rest of Your Life.</div>
     <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
-    <div class="tagline-deadline">Summer Launch Pricing ends Sunday, July 19.</div>
+    <div class="tagline-deadline"><a class="cd-link" href="schedule">View the<span class="cd-long"> full</span> event schedule &rarr;</a></div>
 
     <div class="final-cta-buttons">
       <a href="https://secure.fitfatherproject.com/checkout/breakthrough-ga-discounted-597" class="btn-halo">Reserve GA+ — $597 <span class="arrow">→</span></a>
@@ -4255,7 +4268,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== STICKY CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sc-text"><strong>Breakthrough in the Desert</strong><span class="sep">·</span>August 7–9, 2026<span class="sep">·</span>Summer Launch ends July 19</div>
+  <div class="sc-text"><strong>Breakthrough in the Desert</strong><span class="sep">·</span>August 7–9, 2026<span class="sep">·</span>150 seats</div>
   <a href="#pricing">Reserve Your Spot →</a>
 </div>
 
@@ -4323,15 +4336,27 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
 // Original target: new Date('2026-06-21T23:59:59-07:00')
 // Original fallback text: "Father's Day, June 21, 2026"
 // Original active text: days + " days, " + hours + " hours · Sunday, June 21 (Father's Day)"
+// Countdown to the EVENT, not to a sale. Built so it can never show a dead
+// state: during Aug 7-9 it reads "Happening now", and once the closing
+// ceremony ends the bar removes itself. The previous version counted to a
+// sale deadline and, once passed, told every visitor the offer was over.
+const EVENT_START = new Date('2026-08-07T09:00:00-07:00');
+const EVENT_END   = new Date('2026-08-09T16:00:00-07:00');
 function updateCountdown() {
-  const target = new Date('2026-07-20T00:00:00-07:00');
-  const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Flash sale ended"; return; }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Sun, July 19 (midnight AZ)";
+  const now = new Date();
+  if (now >= EVENT_END) {
+    const bar = el.closest('.countdown-bar');
+    if (bar) bar.style.display = 'none';
+    return;
+  }
+  if (now >= EVENT_START) { el.textContent = 'Happening now in Phoenix'; return; }
+  const diff = EVENT_START - now;
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const dPart = days > 0 ? days + (days === 1 ? ' day, ' : ' days, ') : '';
+  el.textContent = dPart + hours + (hours === 1 ? ' hour' : ' hours') + ' until we begin';
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);

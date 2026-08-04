@@ -3433,6 +3433,15 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
    To revert: delete this entire block (between the FLASH SALE markers).
    ==================================================================== */
 /* FLASH SALE: countdown bar sale badge */
+.countdown-bar #countdown { white-space: nowrap; }
+/* The qualifier is useful on desktop but pushes the bar to three lines on a
+   phone, so it drops out below 600px. */
+@media (max-width: 600px) { .countdown-bar .cd-long { display: none; } }
+.countdown-bar .cd-link {
+  color: var(--gold); text-decoration: none; font-weight: 600;
+  border-bottom: 1px solid rgba(216,184,122,.45); white-space: nowrap;
+}
+.countdown-bar .cd-link:hover { color: var(--gold-soft); border-bottom-color: var(--gold-soft); }
 .countdown-bar .sale-badge {
   display: inline-block;
   background: var(--ember);
@@ -3604,8 +3613,9 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
   <span class="sep">·</span>
   <strong>Save up to 55% off tickets</strong>
   <span class="sep">·</span>
-  <strong>Offer ends:</strong>
-  <span id="countdown">Sun, August 3 (midnight AZ)</span>
+  <span id="countdown">August 7&ndash;9, 2026</span>
+  <span class="sep">&middot;</span>
+  <a class="cd-link" href="schedule">View the event schedule<span class="cd-long"> &amp; choose your days</span> &rarr;</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -4083,7 +4093,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
     <h2 class="section-title">Three ways to come. <em>All at a Tikka Drive family discount.</em></h2>
     <div class="pricing-deadline flash-sale">
       <span class="sale-pill">Tikka Drive Customer Discount</span>
-      Reserve by <strong>Sun, August 3 (midnight AZ)</strong> to lock in your discounted rate.
+      Not sure which days? <a class="cd-link" href="schedule">View the event schedule</a> and pick what fits.
     </div>
 
     <div class="pricing-grid pricing-grid--3col">
@@ -4288,7 +4298,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
     <div class="tagline">Three Days.<br>One Breakthrough.<br>The Rest of Your Life.</div>
     <div class="tagline-meta">August 7–9, 2026 · Arizona Grand Resort, Phoenix</div>
-    <div class="tagline-deadline">Tikka Drive family discount — reserve by <strong>Sun, August 3 (midnight AZ)</strong>.</div>
+    <div class="tagline-deadline">Tikka Drive family discount &mdash; <a class="cd-link" href="schedule">View the event schedule<span class="cd-long"> &amp; choose your days</span> &rarr;</a></div>
 
     <div class="final-cta-buttons">
       <a href="#pricing" class="btn-halo">Reserve Your Ticket <span class="arrow">→</span></a>
@@ -4332,7 +4342,7 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 
 <!-- ===== STICKY CTA ===== -->
 <div class="sticky-cta" id="stickyCta">
-  <div class="sc-text"><strong>Tikka Drive discount</strong><span class="sep">·</span>Save 55% off tickets<span class="sep">·</span>Ends Sun, August 3 (midnight AZ)</div>
+  <div class="sc-text"><strong>Tikka Drive discount</strong><span class="sep">·</span>Save 55% off tickets<span class="sep">·</span>Choose your days</div>
   <a href="#pricing">Reserve Your Ticket →</a>
 </div>
 
@@ -4396,17 +4406,30 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
 });
 
 // TIKKA DRIVE: Countdown target — Sunday, August 3, 2026 midnight AZ (= Aug 4 00:00 MST)
+// Countdown to the EVENT, not to a sale. Built so it can never show a dead
+// state: during Aug 7-9 it reads "Happening now", and once the closing
+// ceremony ends the bar removes itself. The previous version counted to a
+// sale deadline and, once passed, told every visitor the offer was over.
+const EVENT_START = new Date('2026-08-07T09:00:00-07:00');
+const EVENT_END   = new Date('2026-08-09T16:00:00-07:00');
 function updateCountdown() {
-  const target = new Date('2026-08-04T00:00:00-07:00');
-  const diff = target - new Date();
   const el = document.getElementById('countdown');
   if (!el) return;
-  if (diff <= 0) { el.textContent = "Offer ended — contact us"; return; }
-  const days = Math.floor(diff / (1000*60*60*24));
-  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-  el.textContent = days + " days, " + hours + " hours · Sun, August 3 (midnight AZ)";
+  const now = new Date();
+  if (now >= EVENT_END) {
+    const bar = el.closest('.countdown-bar');
+    if (bar) bar.style.display = 'none';
+    return;
+  }
+  if (now >= EVENT_START) { el.textContent = 'Happening now in Phoenix'; return; }
+  const diff = EVENT_START - now;
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const dPart = days > 0 ? days + (days === 1 ? ' day, ' : ' days, ') : '';
+  el.textContent = dPart + hours + (hours === 1 ? ' hour' : ' hours') + ' until we begin';
 }
-
+updateCountdown();
+setInterval(updateCountdown, 60000);
 // TIKKA DRIVE: Single Day Pass radio selector — swap CTA button href based on selected day
 document.querySelectorAll('input[name="single-day"]').forEach(radio => {
   radio.addEventListener('change', (e) => {
@@ -4421,8 +4444,6 @@ document.querySelectorAll('input[name="single-day"]').forEach(radio => {
   });
 });
 
-updateCountdown();
-setInterval(updateCountdown, 60000);
 
 // Reveal on scroll — applies to .fade-in plus all the motion-decorated elements
 const revealSelectors = [

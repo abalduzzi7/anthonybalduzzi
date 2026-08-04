@@ -3435,6 +3435,15 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
    To revert: delete this entire block (between the FLASH SALE markers).
    ==================================================================== */
 /* FLASH SALE: countdown bar sale badge */
+.countdown-bar #countdown { white-space: nowrap; }
+/* The qualifier is useful on desktop but pushes the bar to three lines on a
+   phone, so it drops out below 600px. */
+@media (max-width: 600px) { .countdown-bar .cd-long { display: none; } }
+.countdown-bar .cd-link {
+  color: var(--gold); text-decoration: none; font-weight: 600;
+  border-bottom: 1px solid rgba(216,184,122,.45); white-space: nowrap;
+}
+.countdown-bar .cd-link:hover { color: var(--gold-soft); border-bottom-color: var(--gold-soft); }
 .countdown-bar .sale-badge {
   display: inline-block;
   background: var(--ember);
@@ -3604,9 +3613,11 @@ wistia-player[media-id='mikhgbxilc']:not(:defined) {
 <div class="countdown-bar flash-sale">
   <strong class="sale-badge">A PRIVATE INVITATION FROM ANTHONY</strong>
   <span class="sep">·</span>
-  <strong>August 7–9, 2026</strong>
-  <span class="sep">·</span>
   <strong>Friend pricing from $100</strong>
+  <span class="sep">·</span>
+  <span id="countdown">August 7–9, 2026</span>
+  <span class="sep">·</span>
+  <a class="cd-link" href="schedule">View the event schedule<span class="cd-long"> &amp; choose your days</span> &rarr;</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -4371,11 +4382,30 @@ document.querySelectorAll('.poster-toggle').forEach(toggle => {
 
 // HOMIES: no countdown timer — countdown bar shows a static personal message
 // (updateCountdown is a no-op here since #countdown element doesn't exist on this page)
+// Countdown to the EVENT, not to a sale. Built so it can never show a dead
+// state: during Aug 7-9 it reads "Happening now", and once the closing
+// ceremony ends the bar removes itself. The previous version counted to a
+// sale deadline and, once passed, told every visitor the offer was over.
+const EVENT_START = new Date('2026-08-07T09:00:00-07:00');
+const EVENT_END   = new Date('2026-08-09T16:00:00-07:00');
 function updateCountdown() {
   const el = document.getElementById('countdown');
   if (!el) return;
+  const now = new Date();
+  if (now >= EVENT_END) {
+    const bar = el.closest('.countdown-bar');
+    if (bar) bar.style.display = 'none';
+    return;
+  }
+  if (now >= EVENT_START) { el.textContent = 'Happening now in Phoenix'; return; }
+  const diff = EVENT_START - now;
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const dPart = days > 0 ? days + (days === 1 ? ' day, ' : ' days, ') : '';
+  el.textContent = dPart + hours + (hours === 1 ? ' hour' : ' hours') + ' until we begin';
 }
-
+updateCountdown();
+setInterval(updateCountdown, 60000);
 // HOMIES: Single Day Pass radio selector — swap CTA button href based on selected day
 document.querySelectorAll('input[name="single-day"]').forEach(radio => {
   radio.addEventListener('change', (e) => {
