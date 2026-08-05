@@ -237,6 +237,31 @@
   @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
   @media (prefers-reduced-motion: reduce) { .now-badge::before { animation: none; } }
 
+  /* ----------------------------------------------------------------- map */
+  .map-intro { padding: 26px 0 2px; }
+  .map-wrap { margin: 20px 0 0; display: block; }
+  .map-wrap img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--plaster); border-radius: 4px; background: #fff;
+  }
+  .map-hint {
+    font-family: var(--label); font-size: 11px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--pinyon);
+    text-align: center; margin: 10px 0 0;
+  }
+  /* Text version of the legend. The highlight boxes on the artwork sit over
+     several of the room labels they point at, and those labels are unreadable
+     on a phone regardless, so the names are repeated here as real text. */
+  .key { width: 100%; border-collapse: collapse; margin-top: 22px; }
+  .key td { padding: 10px 0; border-bottom: 1px solid var(--plaster); font-size: 15px; vertical-align: top; }
+  .key tr:last-child td { border-bottom: 0; }
+  .key td:first-child { width: 44%; padding-right: 14px; font-weight: 600; white-space: nowrap; }
+  .key .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: 0; }
+  @media (max-width: 420px) {
+    .key td { font-size: 14px; }
+    .key td:first-child { width: 46%; }
+  }
+
   /* ------------------------------------------------------------- sponsors */
   .sponsor-intro { padding: 26px 0 2px; }
   .sponsor-grid {
@@ -437,8 +462,9 @@
     <details>
       <summary>Lunch &amp; Meals</summary>
       <div class="details-body">
-        <p><strong>Lunch is served daily.</strong> GA+ and VIP eat in separate rooms &mdash; check your
-           badge, and follow the signs on site. Times shift slightly by day, so go by the schedule above.</p>
+        <p><strong>Lunch is served daily.</strong> GA+ eats in <strong>Sierra Ballroom 2&ndash;3</strong>
+           and VIP in <strong>Goldwater</strong> &mdash; check your badge. Times shift slightly by day,
+           so go by the schedule above.</p>
         <table class="rows">
           <tr><td>VIP</td><td>Private lunch with Dr. Balduzzi.</td></tr>
           <tr><td>GA+</td><td>Healthy buffet lunch (protein &amp; veggies) with fellow GA+ guests.</td></tr>
@@ -455,8 +481,8 @@
            you&rsquo;ll have time to shower before doors open at 8:30.</p>
         <table class="rows">
           <tr><td>Friday &middot; 6:30&ndash;7:50 AM</td><td>Walk the Arizona Grand Trails, and the cold plunge is open. Meet at the Arizona Grand Lobby.</td></tr>
-          <tr><td>Saturday &middot; 7:00 AM</td><td>Qigong with Troy Casey in the Breakout Rooms.</td></tr>
-          <tr><td>Sunday &middot; 7:00 AM</td><td>Strength workout with Paige Kelly in the Breakout Rooms. Weighted vests provided.</td></tr>
+          <tr><td>Saturday &middot; 7:00 AM</td><td>Qigong with Troy Casey in Palm 2A&ndash;2D.</td></tr>
+          <tr><td>Sunday &middot; 7:00 AM</td><td>Strength workout with Paige Kelly in Palm 2A&ndash;2D. Weighted vests provided.</td></tr>
         </table>
       </div>
     </details>
@@ -501,10 +527,10 @@ const SCHEDULE = [
         desc:"Waking up to the rest of your life." },
       { start:"10:15", end:"11:00", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
         desc:"Connect in the Vendor Hall with some of the best companies in health. Try experiences like massage, acupuncture, and the cold plunge &mdash; and talk directly with doctors and health experts about peptides, testing, and what&rsquo;s working now." },
-      { start:"11:00", end:"13:00", title:"Movement Breakouts", who:"", loc:"Breakout Rooms",
+      { start:"11:00", end:"13:00", title:"Movement Breakouts", who:"", loc:"Breakout Rooms &middot; Palm 2A&ndash;2D",
         desc:"Two back-to-back sessions &mdash; you&rsquo;ll do both. <strong>Track A:</strong> guided vibration &amp; myofascial massage with Rapid Release. <strong>Track B:</strong> guided breathwork experience with Michael Roviello. Half the room starts with A and half with B, then you switch at noon. Your badge shows which you start with." },
-      { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"Follow On-Site Signage",
-        desc:"Real healthy food, real conversations, no compromises. GA+ and VIP have separate lunch rooms &mdash; check your badge and follow the signs." },
+      { start:"13:00", end:"14:30", title:"Connection Lunch", who:"", loc:"GA+ Sierra Ballroom 2&ndash;3 &middot; VIP Goldwater",
+        desc:"Real healthy food, real conversations, no compromises. GA+ lunch is in Sierra Ballroom 2&ndash;3; VIP lunch is in Goldwater. Check your badge." },
       { start:"14:30", end:"16:30", title:"Health Experts Q&amp;A Panel", who:"Dr. Philip Ovadia, Troy Casey &amp; Dylan Gemelli", loc:"Main Ballroom",
         desc:"Each shares a short presentation on what&rsquo;s actually working, then joins Dr. Balduzzi on stage for an open Q&amp;A." },
       { start:"16:30", end:"17:00", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
@@ -520,7 +546,7 @@ const SCHEDULE = [
     name: "Day Two &middot; Vitality",
     theme: "Reclaim your energy. Learn the science of hormones, heart health, and lifelong vitality.",
     items: [
-      { start:"07:00", end:"07:50", title:"Morning Qigong", who:"Troy Casey", loc:"Breakout Rooms", opt:true,
+      { start:"07:00", end:"07:50", title:"Morning Qigong", who:"Troy Casey", loc:"Breakout Rooms &middot; Palm 2A&ndash;2D", opt:true,
         desc:"The Certified Health Nut teaches you the ancient art of qigong &mdash; body movements paired with synchronized breathing, for energy and longevity. The kind of movement that leaves you energized, open, and alive." },
       { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"Vendor Hall",
         desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
@@ -528,10 +554,10 @@ const SCHEDULE = [
         desc:"Release the blockages creating physical and emotional pain, so you can step into your strongest, most alive self." },
       { start:"11:00", end:"11:40", title:"Break &amp; Vendor Experiences", who:"", loc:"Vendor Hall",
         desc:"Connect in the Vendor Hall with some of the best companies in health. Try experiences like massage, acupuncture, and the cold plunge &mdash; and talk directly with doctors and health experts about peptides, testing, and what&rsquo;s working now." },
-      { start:"11:40", end:"12:45", title:"Guided Breathwork", who:"Ryan McBurney &amp; Shelby Von Oepen (Liquid Breathwork)", loc:"Breakout Rooms",
+      { start:"11:40", end:"12:45", title:"Guided Breathwork", who:"Ryan McBurney &amp; Shelby Von Oepen (Liquid Breathwork)", loc:"Breakout Rooms &middot; Palm 2A&ndash;2D",
         desc:"A deep group session &mdash; learn how to use your breath to create more relaxation and healing in your body." },
-      { start:"12:45", end:"14:00", title:"Connection Lunch", who:"", loc:"Follow On-Site Signage",
-        desc:"Real food and real conversations with the people walking this with you. GA+ and VIP have separate lunch rooms &mdash; check your badge and follow the signs." },
+      { start:"12:45", end:"14:00", title:"Connection Lunch", who:"", loc:"GA+ Sierra Ballroom 2&ndash;3 &middot; VIP Goldwater",
+        desc:"Real food and real conversations with the people walking this with you. GA+ lunch is in Sierra Ballroom 2&ndash;3; VIP lunch is in Goldwater. Check your badge." },
       { start:"14:00", end:"14:15", title:"Giveaways from Stage", who:"", loc:"Main Ballroom",
         desc:"Doors reopen and we give things away. Be in the room." },
       { start:"14:15", end:"15:15", title:"Hormones, Thyroid &amp; Midlife Energy", who:"Dr. Amie Hornaman", loc:"Main Ballroom",
@@ -553,7 +579,7 @@ const SCHEDULE = [
     name: "Day Three &middot; Integration",
     theme: "Distill the weekend into a clear plan you can live for the rest of your life, with an open heart.",
     items: [
-      { start:"07:00", end:"07:50", title:"Morning Strength Workout", who:"Paige Kelly", loc:"Breakout Rooms", opt:true,
+      { start:"07:00", end:"07:50", title:"Morning Strength Workout", who:"Paige Kelly", loc:"Breakout Rooms &middot; Palm 2A&ndash;2D", opt:true,
         desc:"A fun, energizing circuit workout &mdash; body-weight movements and Pilates-inspired flow. Weighted vests available." },
       { start:"08:30", end:"09:00", title:"Doors &amp; Vendor Hall Open", who:"", loc:"Vendor Hall",
         desc:"Coffee, mingling, and vendor experiences to explore &mdash; cold plunge, red-light therapy, and more." },
@@ -565,8 +591,8 @@ const SCHEDULE = [
         desc:"Connect in the Vendor Hall &mdash; massage, acupuncture, cold plunge, and time with the doctors and health experts." },
       { start:"11:15", end:"12:15", title:"Keynote Part II: Life Force &amp; Longevity", who:"Dr. Anthony Balduzzi", loc:"Main Ballroom",
         desc:"Applying the best practices for lasting energy and healthspan." },
-      { start:"12:15", end:"13:30", title:"Final Connection Lunch", who:"", loc:"Follow On-Site Signage",
-        desc:"With the people who are now your community. GA+ and VIP have separate lunch rooms &mdash; check your badge and follow the signs." },
+      { start:"12:15", end:"13:30", title:"Final Connection Lunch", who:"", loc:"GA+ Sierra Ballroom 2&ndash;3 &middot; VIP Goldwater",
+        desc:"With the people who are now your community. GA+ lunch is in Sierra Ballroom 2&ndash;3; VIP lunch is in Goldwater. Check your badge." },
       { start:"13:30", end:"14:30", title:"Connect &amp; Reflect", who:"Dr. Anthony Balduzzi", loc:"Main Ballroom",
         desc:"Distilling the weekend into a clear plan &mdash; what to start, what to stop, and what to continue." },
       { start:"14:30", end:"15:00", title:"Final Vendor Hall Break", who:"", loc:"Vendor Hall",
@@ -576,6 +602,40 @@ const SCHEDULE = [
     ]
   }
 ];
+
+/* ===========================================================================
+   VENUE MAP KEY. Colours are sampled from the artwork's own legend so the
+   text key and the image can never drift apart.
+   =========================================================================== */
+const MAP_KEY = [
+  ["#CC6CE7", "Main Session",          "Eucalyptus &middot; Foxtail &middot; Honeysuckle &middot; Ironwood"],
+  ["#7ED957", "Vendor Hall",           "Acacia &middot; Bougainvillea &middot; Copperwood &middot; Desert Willow"],
+  ["#FFDE5A", "Breakout Rooms",        "Palm 2A &ndash; 2D"],
+  ["#FF3132", "Registration",          "Ballroom Foyer"],
+  ["#FF751F", "Cold Plunge",           "Plaza"],
+  ["#FF66C5", "VIP Lounge &amp; Lunch","Goldwater"],
+  ["#8C52FF", "GA+ Lunch",             "Sierra Ballroom 2 &amp; 3"],
+];
+
+/* `lazy` is wrong for the map tab: its panel starts hidden, so the image never
+   enters the viewport and never loads — the tab renders the key with an empty
+   space where the map should be. The tab copy loads eagerly (80KB webp); the
+   copy inside the collapsed <details> stays lazy, since that one genuinely
+   should wait until someone opens it. */
+const mapHtml = (loading) =>
+  `<a class="map-wrap" href="venue-map.jpg" target="_blank" rel="noopener noreferrer">
+     <picture>
+       <source srcset="venue-map.webp" type="image/webp">
+       <img src="venue-map.jpg" alt="Breakthrough in the Desert event space map, Arizona Grand Resort"
+            loading="${loading}" decoding="async" width="1545" height="2000">
+     </picture>
+   </a>
+   <p class="map-hint">Tap the map to open it full size</p>
+   <table class="key">` +
+  MAP_KEY.map(([c, what, where]) =>
+    `<tr><td><span class="dot" style="background:${c}"></span>${what}</td><td>${where}</td></tr>`
+  ).join("") +
+  `</table>`;
 
 /* ===========================================================================
    SPONSORS. Same idea as SCHEDULE — edit this list, nothing else.
@@ -723,13 +783,47 @@ sPanel.innerHTML =
       open from 8:30 AM daily and during every break.</div>`;
 daysEl.appendChild(sPanel);
 
+/* ---- Venue map: its own tab, after Sponsors ---- */
+const mapTab = document.createElement("button");
+mapTab.className = "tab";
+mapTab.type = "button";
+mapTab.setAttribute("role", "tab");
+mapTab.setAttribute("aria-selected", "false");
+mapTab.setAttribute("aria-controls", "panel-map");
+mapTab.innerHTML = "Map<span>Venue</span>";
+mapTab.addEventListener("click", () => select(SCHEDULE.length + 1));
+tabsEl.appendChild(mapTab);
+
+const mPanel = document.createElement("section");
+mPanel.className = "day-panel";
+mPanel.id = "panel-map";
+mPanel.setAttribute("role", "tabpanel");
+mPanel.hidden = true;
+mPanel.innerHTML =
+  `<div class="map-intro">
+     <h2 class="day-name">Event Space Map</h2>
+     <p class="day-theme">Where everything happens at the Arizona Grand. Every session
+        location in the schedule appears below.</p>
+   </div>` + mapHtml("eager");
+daysEl.appendChild(mPanel);
+
+/* ---- Same map as a collapsible under the three day tabs ---- */
 const extrasEl = document.querySelector(".extras");
+if (extrasEl) {
+  const d = document.createElement("details");
+  d.innerHTML = `<summary>Venue Map</summary><div class="details-body">${mapHtml("lazy")}</div>`;
+  extrasEl.appendChild(d);
+}
+
+const SPONSOR_TAB = SCHEDULE.length;
+const MAP_TAB = SCHEDULE.length + 1;
 
 function select(i) {
   [...tabsEl.children].forEach((t, k) => t.setAttribute("aria-selected", k === i ? "true" : "false"));
   [...daysEl.children].forEach((p, k) => p.hidden = k !== i);
-  // Meals / movement / where-to-eat belong to the schedule, not the sponsor wall.
-  if (extrasEl) extrasEl.style.display = (i === SCHEDULE.length) ? "none" : "";
+  // Meals / movement / where-to-eat / map belong to the schedule days, not to
+  // the sponsor wall or the map tab (which would then show the map twice).
+  if (extrasEl) extrasEl.style.display = (i === SPONSOR_TAB || i === MAP_TAB) ? "none" : "";
 }
 
 /* Highlight the session happening right now, and only on the real day. */
